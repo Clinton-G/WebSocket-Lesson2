@@ -1,10 +1,10 @@
 import { w3cwebsocket as W3CWebSocket } from 'websocket';
 
-const client = new W3CWebSocket('ws://your-websocket-server-url');
+const client = new W3CWebSocket('ws://localhost:8080');
 
 export const connectWebSocket = (onMessage: (data: any) => void) => {
   client.onopen = () => {
-    console.log('WebSoket Connected');
+    console.log('WebSocket Connected');
   };
 
   client.onmessage = (message) => {
@@ -20,10 +20,10 @@ export const connectWebSocket = (onMessage: (data: any) => void) => {
   };
 
   client.onerror = (error) => {
-    console.error('WebSocket Error', error);
+    console.error('WebSocket Error:', error);
   };
 
   client.onclose = () => {
-    console.log('WebSocket Close');
+    console.log('WebSocket Closed');
   };
 };
